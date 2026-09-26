@@ -42,6 +42,16 @@ with tempfile.TemporaryFile() as archive:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 with site.open(info) as src, target.open("wb") as dst:
                     shutil.copyfileobj(src, dst)
+# Optional edits can be placed here; they are copied over the verified snapshot.
+OVERLAYS = ROOT / "site-overrides"
+if OVERLAYS.exists():
+    for source in OVERLAYS.rglob("*"):
+        if source.is_file() and source.name != ".gitkeep":
+            relative = source.relative_to(OVERLAYS)
+            target = ROOT / "dist" / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
+
 if not (ROOT / "dist" / "index.html").is_file():
     raise SystemExit("Built site is missing dist/index.html")
 print(f"Restored and verified {MANIFEST['files']} site files to dist/")

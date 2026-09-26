@@ -22,3 +22,4 @@ python3 restore_site.py
 ```
 
 ビルドは全分割データと完成アーカイブのSHA-256を検証してから展開します。元の画像やHTMLが欠けている場合は失敗します。
+\n## Site edits\n\nPlace only the files you change in `site-overrides/` using their paths relative to the published site. For example, `site-overrides/assets/css/site.css` replaces `dist/assets/css/site.css` after the verified archive is restored. Commit the change to GitHub; a Git-connected Cloudflare Pages project will rebuild and publish it automatically. The original manga archive does not need to be re-uploaded for these edits.\n
