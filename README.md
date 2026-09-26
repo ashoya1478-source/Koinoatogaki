@@ -1,3 +1,24 @@
 # 恋のあとがき。／あと1ページの恋。
 
-完成サイトの転送中です。転送と検証が完了するまでCloudflareへ接続しないでください。
+公式作品サイトの静的公開リポジトリです。完成済み作品とサイト一式を、ハッシュ検証後に `dist/` へ復元します。
+
+## Cloudflare Pages
+
+- Git repository: this repository
+- Production branch: `main`
+- Framework preset: `None`
+- Build command: `python3 restore_site.py`
+- Build output directory: `dist`
+- Root directory: repository root
+
+初回接続後、ビルドが成功するとCloudflareの `*.pages.dev` URLで公開されます。Pagesのプロジェクト名を `koinoatogaki` に設定すると `https://koinoatogaki.pages.dev` になります。
+
+## Local build
+
+Python 3が必要です。
+
+```sh
+python3 restore_site.py
+```
+
+ビルドは全分割データと完成アーカイブのSHA-256を検証してから展開します。元の画像やHTMLが欠けている場合は失敗します。

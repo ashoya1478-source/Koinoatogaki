@@ -1,0 +1,11 @@
+{
+  "name": "koinoatogaki-static",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "python3 restore_site.py"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
